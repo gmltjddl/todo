@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="ko">
+    <head>
+        <meta charset="UTF-8">
+        <title>체크박스 모양변경</title>
+        <style>
+            form{ padding: 10px; }
+.circle{
+    display: inline-block; /* 영역적용가능해짐 */
+    width: 20px; height: 20px;
+    border: 2px solid #666;
+    box-sizing: border-box;
+    border-radius: 10px; /* 모서리둥글게 처리 */
+    position: relative; top: 4px;
+    background-size: 70%;
+    background-repeat: no-repeat;
+    background-position: center;
+}
+
+#chk:checked + .circle{
+    background-color: white;
+    border-color: green;
+    background-image: url(/images/green.png);
+}
+#chk{ position: relative; left: -999em; }
+        </style>
+    </head>
+    <body>
+       
+            <!--label태그는 체크박스를 누르지 않아도 연결된 체크박스를 체크해줌-->
+            <label for="chk">
+                <input type="checkbox" id="chk">
+                <!--실제로는 글자를 기울이는 태그, 퍼블리셔들이 아이콘담을 때 많이 사용-->
+                <i class="circle"></i>
+                <span class="text"></span>
+            </label>
+   
+    </body>
+</html>
