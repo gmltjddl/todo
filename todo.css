@@ -38,33 +38,37 @@ body{
   position: relative;
   display:inline-block;
 }
-.input{
-  width: 550px;
-  height: 65.59px;
-  outline:none;
-  display:inline-block;
-  outline:none;
-  font-size:24px;
-  line-height: 1.4em;
-  font-family: inherit;
-	font-weight: inherit;
-  border :0px solid red;
-  box-shadow: 0 2px 4px 0 rgba(0, 0, 0, 0.2),
-  0 25px 50px 0 rgba(0, 0, 0, 0.1);
+input::placeholder {
   font-style: italic;
-  background-color: #fefefe;
+  color: #e5e5e5;
 }
+
+.input{
+    width: 550px;
+    height: 65.59px;
+    margin: 0;
+    font-size: 24px;
+    font-weight: inherit;
+    line-height: 1.4em;
+    padding: 16PX 16PX 16PX 60PX;
+    border: none;
+    border: 0;
+    box-sizing: border-box;
+    outline: none;
+  }
+
+
 .task-box{
   margin-left:5px;
   margin-top:0px;
-  border:1px solid black;
   width: 514px;
   min-height: 0px;
   text-align: left;
+  border-bottom: 0px solid;
   
 }
 .delete{
-  /* display: none; */
+  cursor: default;
   position: absolute;
   top: 0;
   right: 10px;
@@ -72,17 +76,40 @@ body{
   width: 40px;
   height: 40px;
   margin: auto 0;
-  font-size: 30px;
-  color: #cc9a9a;
+  font-size: 20px;
+  font-weight: bold;
+  color:white;
   margin-bottom: 11px;
   transition: color 0.2s ease-out;
   background: none;
-  border:1px solid;
+  border:0px solid;
 }
-/* .circle{
+.delete:hover{
+  color: #cc9a9a;
+}
+
+.all-chk-btn button{
+  background-color: transparent;
+  border: 0;
+}
+.all-chk-btn{
+  position: absolute;
+  min-width: none;
+  min-height: none;
+  width: 1.5rem;
+  height: 1.5rem;
+  margin: 0.5rem 0.5rem;
+  font-size: 1.2rem;
+  color: gray;
+  top: 10px;
+  background-color: transparent;
+  border: 0px;
+}
+
+.circle{
 display: inline-block; 
-width: 40px;
-height:40px;
+width: 35px;
+height:35px;
 border:2px solid #ededed;
 box-sizing: border-box;
 border-radius: 50%;
@@ -93,53 +120,54 @@ background-size: 70%;
 background-repeat: no-repeat;
 background-position: center;
 
-} */
-/* #chk:checked + .circle{
+}
+:checked + .circle{
   background-color: white;
-  border-color: green;
-  background-image: url(green.png);
-} */
+  background-image: url(./images/green.png);
+  border :1px solid green;
+}
 .chkbox{
-  width: 40px;
-  height:40px;
+  width: 35px;
+  height:35px;
   box-sizing: border-box; 
   display:inline-block;
   position: relative;
   top: 10px;
-  /* appearance: none; */
+  appearance: none;
   margin: auto 0;
-  border:3px solid red;
+  border:0px solid red;
   border-radius: 50%; 
   left:5px;
 }
 
-.task{
-
-}
 .task-box .task{
   list-style: none;
-  border:1px solid;
+  border:0px solid;
   width:553px;
   height:59px;
   position: relative;
   right:40px;
   display: block;
-  background-color: #fefefe;
+  background-color: red;
   color:black;  
+  border-bottom: 1px solid;
 }
 .task label{
   width:553px;
   height:59px;
-  border:0px solid;
   position: relative;
   display: inline-block;
   font-size:24px;
   font-weight: 300px;
-  border-bottom: 1px solid #ededed;
+  border-bottom: 1px solid #dfdfdf;
   background-color: #fefefe;
   color:black;
 }
-.p1{
+.task label p.checked{
+  text-decoration: line-through;
+
+}
+p{
   margin: auto 0;
   width:440px;
   height:43px;
@@ -150,20 +178,23 @@ background-position: center;
   display: inline-block; 
   padding-top: 10px;
   left:10px;
+  bottom:3px;
 
 
 }
 
 .button-wrap{
-  width: 554px;
+  width: 553px;
   height:40px;
-  border:1px solid black;
+  border:1px solid #dfdfdf;
   position:relative;
   left:5px;
   top:-17px;
   background-color: #fefefe;
+  opacity :0;
+
 }
-.button-div{
+.buttons{
   width: 553px;
   height:35px;
   padding-top:5px;
@@ -188,7 +219,7 @@ background-position: center;
   color:#a39491;
   bottom:0px;
 }
-.All{
+#all{
   position:relative;
   right:45px;
   cursor:pointer;
@@ -200,11 +231,11 @@ background-position: center;
   display:inline-block;
   bottom:20px;
 }
-.All:hover{
+#all:hover{
   border:1px solid;
   border-color: rgba(175, 47, 47, 0.2);
 }
-.Active{
+#pending{
   position:relative;
   right:35px;
   cursor:pointer;
@@ -216,11 +247,11 @@ background-position: center;
   top:2px;
   bottom:20px;
 }
-.Active:hover{
+#pending:hover{
   border:1px solid;
   border-color: rgba(175, 47, 47, 0.2);
 }
-.Completed{
+#completed{
   width:84px;
   height:24px;
   font-size: 14px;
@@ -234,11 +265,11 @@ background-position: center;
   font-size:100%;
   display:inline-block;
 }
-.Completed:hover{
+#completed:hover{
   border:1px solid;
   border-color: rgba(175, 47, 47, 0.2);
 }
-.Clear-btn{
+.clear-btn{
   width: 125px;
   font-size: 15px;
   border:0px solid;
@@ -254,6 +285,14 @@ background-position: center;
   background: none;
   bottom:33px;  
 }
-.Clear-btn:hover{
+.clear-btn:hover{
   text-decoration: underline;
+}
+.clear-btn.hide{
+  opacity:0;
+  pointer-events: none;
+}
+.clear-btn.show{
+  opacity:1;
+  pointer-events: default;
 }

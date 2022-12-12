@@ -14,17 +14,18 @@
     </div>
     <div class="input-wrap">
       <div class="input-div">
-        <input id="" class="input" type="text" placeholder="What needs to be done?">
+        <button class="all-chk-btn">&#10003</button>
+        <input id="" name="inp"class="input" type="text" placeholder="What needs to be done?" onkeydown="onkeydown(e)">
       </div>
-      <ul class="task-box"> </ul>
-      <div class="button-wrap">
-        <div class="button-div">
-          <span class="left-count">0</span> &nbsp;<span class="left-item">left items</span>
-          <span class="All">All</span>
-          <span class="Active">Active</span>
-          <span class="Completed">Completed</sapn>
+      <ul class="task-box"></ul>
+      <div class="button-wrap" id="btw">
+        <div class="buttons">
+          <div class="left-count">0</div> &nbsp;<span class="left-item">left items</span>
+          <span class="active" id="all">All</span>
+          <span id="pending">Active</span>
+          <span id="completed">Completed</sapn>
         </div>
-        <button class="Clear-btn" onclick="">Clear completed</button>
+        <button class="clear-btn" onclick="">Clear completed</button>
       </div>
     </div>
   </div>
